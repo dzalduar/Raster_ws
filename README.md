@@ -22,7 +22,8 @@ Complete la tabla:
 
 | Integrante | github nick |
 |------------|-------------|
-|            |             |
+|Oscar Parra | odparraj    |
+|Alejandra Zaldua|dzalduar |
 
 ## Discusión
 
