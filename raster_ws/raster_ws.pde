@@ -19,6 +19,7 @@ boolean triangleHint = true;
 boolean gridHint = true;
 boolean debug = true;
 boolean subdivision = false;
+boolean shading = false;
 
 // 3. Use FX2D, JAVA2D, P2D or P3D
 String renderer = P3D;
@@ -114,13 +115,15 @@ void triangleRaster() {
                 //rect(frame.coordinatesOf(P).x(),frame.coordinatesOf(P).y(),sc,sc);
               } 
             }
+            if(shading){
+              int nC= (int)pow(2,s);
+              nC= nC*nC;            
+              int fc= round((points.size()*255)/nC);            
+              fill(fc);
+            }else{
+              fill(255,255,0);
+            }
             
-            int nC= widthCell/(int)pow(2,s);
-            println(nC);
-            nC= nC*nC;
-            int fc= round((points.size()*255)/nC);
-            println(fc);
-            fill(255);
             for(int k=0; k < points.size(); k++ ){
               rect(frame.coordinatesOf(points.get(k)).x(),frame.coordinatesOf(points.get(k)).y(),sc,sc);
             }
@@ -222,6 +225,8 @@ void keyPressed() {
       spinningTask.run(20);
   if (key == 'y')
     yDirection = !yDirection;
-  if (key == 's')
+  if (key == 'a')
     subdivision = !subdivision;
+  if (key == 's')
+    shading = !shading;
 }
